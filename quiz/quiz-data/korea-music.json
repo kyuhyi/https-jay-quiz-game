@@ -1,0 +1,146 @@
+{
+    "category": "대한민국 음악",
+    "total_questions": 20,
+    "questions": [
+      {
+        "id": 1,
+        "question": "BTS의 데뷔년도는?",
+        "options": ["2011", "2012", "2013", "2014"],
+        "correct": 2,
+        "explanation": "BTS는 2013년 6월 13일에 데뷔했습니다."
+      },
+      {
+        "id": 2,
+        "question": "'좋은 날'의 가수는 누구인가?",
+        "options": ["아이유", "태연", "에일리", "정은지"],
+        "correct": 0,
+        "explanation": "아이유의 '좋은 날'은 3단 고음으로 유명합니다."
+      },
+      {
+        "id": 3,
+        "question": "다음 중 YG 엔터테인먼트 소속이 아닌 가수는?",
+        "options": ["빅뱅", "2NE1", "EXO", "블랙핑크"],
+        "correct": 2,
+        "explanation": "EXO는 SM 엔터테인먼트 소속입니다."
+      },
+      {
+        "id": 4,
+        "question": "다음 중 SM 엔터테인먼트 소속이 아닌 가수는?",
+        "options": ["슈퍼주니어", "트와이스", "샤이니", "NCT"],
+        "correct": 1,
+        "explanation": "트와이스는 JYP 엔터테인먼트 소속입니다."
+      },
+      {
+        "id": 5,
+        "question": "2023년 MAMA 올해의 노래상 수상곡은?",
+        "options": ["Ditto (NewJeans)", "Seven (정국)", "I AM (IVE)", "Hype Boy (NewJeans)"],
+        "correct": 0,
+        "explanation": "NewJeans의 'Ditto'가 2023 MAMA 올해의 노래상을 수상했습니다."
+      },
+      {
+        "id": 6,
+        "question": "'벚꽃엔딩'을 부른 가수는 누구인가?",
+        "options": ["볼빨간사춘기", "버스커 버스커", "윤종신", "이문세"],
+        "correct": 1,
+        "explanation": "버스커 버스커의 '벚꽃엔딩'은 봄이 오면 다시 차트에 오르는 곡입니다."
+      },
+      {
+        "id": 7,
+        "question": "다음 중 1990년대에 데뷔한 그룹이 아닌 것은?",
+        "options": ["HOT", "젝스키스", "빅뱅", "핑클"],
+        "correct": 2,
+        "explanation": "빅뱅은 2006년에 데뷔했습니다."
+      },
+      {
+        "id": 8,
+        "question": "'사랑은 늘 도망가'는 어떤 드라마 OST인가?",
+        "options": ["태양의 후예", "슬기로운 의사생활", "사랑의 불시착", "겨울연가"],
+        "correct": 1,
+        "explanation": "임영웅이 부른 이 곡은 '슬기로운 의사생활' OST입니다."
+      },
+      {
+        "id": 9,
+        "question": "트와이스의 데뷔곡은?",
+        "options": ["Knock Knock", "Cheer Up", "Like OOH-AHH", "TT"],
+        "correct": 2,
+        "explanation": "트와이스는 2015년 'Like OOH-AHH'로 데뷔했습니다."
+      },
+      {
+        "id": 10,
+        "question": "다음 중 2010년대 대표 걸그룹이 아닌 것은?",
+        "options": ["소녀시대", "2NE1", "핑클", "레드벨벳"],
+        "correct": 2,
+        "explanation": "핑클은 1998년 데뷔한 1세대 걸그룹입니다."
+      },
+      {
+        "id": 11,
+        "question": "방탄소년단의 첫 빌보드 1위 곡은?",
+        "options": ["FAKE LOVE", "Dynamite", "Butter", "Life Goes On"],
+        "correct": 1,
+        "explanation": "BTS는 2020년 'Dynamite'로 빌보드 핫100 1위를 달성했습니다."
+      },
+      {
+        "id": 12,
+        "question": "이문세의 대표곡이 아닌 것은?",
+        "options": ["광화문 연가", "붉은 노을", "소녀", "벚꽃엔딩"],
+        "correct": 3,
+        "explanation": "'벚꽃엔딩'은 버스커 버스커의 곡입니다."
+      },
+      {
+        "id": 13,
+        "question": "'보고 싶다'를 부른 가수는?",
+        "options": ["김범수", "이승철", "김범수", "윤종신"],
+        "correct": 0,
+        "explanation": "김범수의 '보고 싶다'는 명곡으로 손꼽힙니다."
+      },
+      {
+        "id": 14,
+        "question": "2022년 '그때 그 순간 그대로'(그그그)를 부른 가수는?",
+        "options": ["성시경", "WSG워너비", "태연", "헤이즈"],
+        "correct": 1,
+        "explanation": "WSG워너비는 '놀면 뭐하니?'에서 결성된 프로젝트 그룹입니다."
+      },
+      {
+        "id": 15,
+        "question": "다음 중 EXO의 히트곡이 아닌 것은?",
+        "options": ["Growl", "Fantastic Baby", "Love Shot", "Call Me Baby"],
+        "correct": 1,
+        "explanation": "'Fantastic Baby'는 빅뱅의 곡입니다."
+      },
+      {
+        "id": 16,
+        "question": "2022년 FIFA 월드컵 공식 주제가를 부른 한국 가수는?",
+        "options": ["방탄소년단", "정국", "싸이", "블랙핑크"],
+        "correct": 1,
+        "explanation": "정국이 부른 'Dreamers'가 FIFA 월드컵 공식 주제가로 선정되었습니다."
+      },
+      {
+        "id": 17,
+        "question": "싸이의 '강남스타일'이 빌보드 핫100에서 기록한 최고 순위는?",
+        "options": ["2위", "1위", "3위", "5위"],
+        "correct": 0,
+        "explanation": "'강남스타일'은 7주 연속 빌보드 핫100 2위를 기록했습니다."
+      },
+      {
+        "id": 18,
+        "question": "다음 중 박효신의 노래가 아닌 것은?",
+        "options": ["야생화", "눈의 꽃", "비 오는 날의 수채화", "바람이 부네요"],
+        "correct": 2,
+        "explanation": "'비 오는 날의 수채화'는 강인원, 권인하, 김현식이 부른 곡입니다."
+      },
+      {
+        "id": 19,
+        "question": "'제발'이라는 곡을 부른 가수는?",
+        "options": ["임재범", "이소라", "김건모", "윤미래"],
+        "correct": 1,
+        "explanation": "이소라의 대표곡 중 하나가 '제발'입니다."
+      },
+      {
+        "id": 20,
+        "question": "'사랑을 했다'는 어떤 그룹의 노래인가?",
+        "options": ["빅뱅", "세븐틴", "iKON", "워너원"],
+        "correct": 2,
+        "explanation": "iKON의 '사랑을 했다'는 초등학생들에게도 큰 사랑을 받았습니다."
+      }
+    ]
+  }

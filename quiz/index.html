@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 일반 메타 태그 -->
+    <meta name="description" content="너는 유식하다! 퀴즈">
+    <meta name="keywords" content="박제이, 퀴즈게임, 유아게임">
+    
+    <!-- 오픈그래프 메타 태그 -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="너는 유식하다! 퀴즈">
+    <meta property="og:description" content="당신은 할 수 있어요!by jacob">
+    <meta property="og:image" content="/images/start.png">
+    <title>너는 유식하다! 퀴즈</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #7B68EE;
+            --secondary-color: #FFB6C1;
+            --background-color: #F0F8FF;
+            --text-color: #333333;
+            --desk-color: #8B4513;
+            --board-color: #006400;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 700;
+            background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
+                            url('/api/placeholder/800/600');
+            background-repeat: repeat;
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .classroom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .blackboard {
+            background-color: var(--board-color);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            color: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.15);
+            border: 15px solid #8B4513;
+            position: relative;
+        }
+
+        .blackboard::before {
+            content: '';
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 10px;
+            background-color: #8B4513;
+        }
+
+        .blackboard h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .desks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+
+        .desk {
+            background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+            border-radius: 15px 15px 0 0;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .desk::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: #6B3308;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .desk:hover {
+            transform: translateY(-5px);
+        }
+
+        .desk h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .desk p {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .quiz-section {
+            display: none;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+
+        .quiz-section.active {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        .question {
+            font-size: 1.4em;
+            margin-bottom: 25px;
+            color: var(--text-color);
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .options {
+            display: grid;
+            gap: 15px;
+        }
+
+        .option {
+            padding: 15px 20px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1em;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .option:hover::before {
+            transform: translateX(100%);
+        }
+
+        .option.selected {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .option.correct {
+            background-color: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+
+        .option.wrong {
+            background-color: #FF5252;
+            color: white;
+            border-color: #FF5252;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1em;
+            font-weight: 700;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .back-to-categories {
+            background-color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .score-display {
+            text-align: center;
+            font-size: 1.5em;
+            margin-top: 25px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            color: var(--primary-color);
+        }
+
+        .feedback-message {
+            text-align: center;
+            font-size: 1.3em;
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 카테고리별 색상 */
+        .desk[data-category="대한민국 음악"] { background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%); }
+        .desk[data-category="사자성어"] { background: linear-gradient(135deg, #4ECDC4 0%, #6BE5DC 100%); }
+        .desk[data-category="넌센스"] { background: linear-gradient(135deg, #45B7D1 0%, #5EC9E3 100%); }
+        .desk[data-category="미술"] { background: linear-gradient(135deg, #96CEB4 0%, #AAE2C8 100%); }
+        .desk[data-category="경제"] { background: linear-gradient(135deg, #FFEEAD 0%, #FFF1C1 100%); }
+        .desk[data-category="역사"] { background: linear-gradient(135deg, #D4A5A5 0%, #E6B7B7 100%); }
+        .desk[data-category="연예인"] { background: linear-gradient(135deg, #FF9999 0%, #FFABAB 100%); }
+        .desk[data-category="스포츠"] { background: linear-gradient(135deg, #9EC1CF 0%, #B0D3E1 100%); }
+        .desk[data-category="기본지식"] { background: linear-gradient(135deg, #9FA8DA 0%, #B1BAEC 100%); }
+
+        .chalk-dust {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(255,255,255,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .blackboard {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            .blackboard h1 {
+                font-size: 1.8em;
+            }
+
+            .desks-grid {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+
+            .question {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="classroom">
+        <div class="blackboard">
+            <h1>너는 유식하다! <br>퀴즈</h1>
+            <p class="chalk-dust"></p>
+        </div>
+        
+        <button class="back-to-categories" style="display: none;">← 칠판으로 돌아가기</button>
+
+        <div class="desks-grid">
+            <div class="desk" data-category="대한민국 음악">
+                <h3>🎵 대한민국 음악</h3>
+                <p>K-pop부터 전통음악까지</p>
+            </div>
+            <div class="desk" data-category="사자성어">
+                <h3>📚 사자성어</h3>
+                <p>한자성어 퀴즈</p>
+            </div>
+            <div class="desk" data-category="넌센스">
+                <h3>🎪 넌센스</h3>
+                <p>재미있는 말장난</p>
+            </div>
+            <div class="desk" data-category="미술">
+                <h3>🎨 미술</h3>
+                <p>한국의 예술</p>
+            </div>
+            <div class="desk" data-category="경제">
+                <h3>💰 경제</h3>
+                <p>한국 경제 상식</p>
+            </div>
+            <div class="desk" data-category="역사">
+                <h3>⌛ 역사</h3>
+                <p>한국의 역사</p>
+            </div>
+            <div class="desk" data-category="연예인">
+                <h3>🌟 연예인</h3>
+                <p>한류 스타</p>
+            </div>
+            <div class="desk" data-category="스포츠">
+                <h3>⚽ 스포츠</h3>
+                <p>스포츠 상식</p>
+            </div>
+            <div class="desk" data-category="기본지식">
+                <h3>🎓 기본지식</h3>
+                <p>한국 일반 상식</p>
+            </div>
+        </div>
+
+        <div class="quiz-section">
+            <div class="question-container">
+                <div class="question"></div>
+                <div class="options"></div>
+                <div class="feedback-message"></div>
+            </div>
+            <div class="controls">
+                <button class="submit-btn">정답 확인</button>
+                <button class="next-btn" style="display: none;">다음 문제</button>
+            </div>
+            <div class="score-display">점수: <span class="score">0</span> / <span class="total">10</span></div>
+        </div>
+    </div>
+
+    <script src="main.js"></script> <!-- main.js 파일을 불러옵니다 -->
+</body>
+</html>
